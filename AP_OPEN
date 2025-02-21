@@ -5,7 +5,7 @@ interface=wlan1
 driver=nl80211
 
 # Nom du spot Wi-Fi
-ssid=AP_OPEN
+ssid=Airport
 
 # mode Wi-Fi (a = IEEE 802.11a, b = IEEE 802.11b, g = IEEE 802.11g)
 hw_mode=g
