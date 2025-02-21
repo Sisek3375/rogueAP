@@ -1,0 +1,21 @@
+# interface wlan du Wi-Fi
+interface=wlan1
+
+# nl80211 avec tous les drivers Linux mac80211 
+driver=nl80211
+
+# Nom du spot Wi-Fi
+ssid=AP_OPEN
+
+# mode Wi-Fi (a = IEEE 802.11a, b = IEEE 802.11b, g = IEEE 802.11g)
+hw_mode=g
+
+# canal de fréquence Wi-Fi (1-14)
+channel=1
+
+beacon_int=100 
+
+dtim_period=2
+
+# Max de stations qui peuvent se connecter
+max_num_sta=10 
