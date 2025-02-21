@@ -1,18 +1,17 @@
 #!/bin/bash
 
-# Stop les serices si ils sont lancés
-systemctl stop hostapd dnsmasq
-
-# Modifie l'IP de ma carte wifi externe
+echo "[+] Configuration du réseau..."
 ip addr add 192.168.1.1/24 dev wlan1
+ip link set wlan1 up
 
-# redirige les données sur internet
+echo "[+] Activation du routage et du NAT..."
 echo 1 > /proc/sys/net/ipv4/ip_forward
-iptables -I POSTROUTING -t nat -o wlan0 -j MASQUERADE
+iptables -t nat -F
+iptables -X
+iptables -Z
+iptables -t nat -A POSTROUTING -o wlan0 -j MASQUERADE
 
-# Ouvrir le premier terminal et exécuter hostapd
+echo "[+] Démarrage des services..."
 hostapd AP_OPEN &
-
-# Ouvrir le deuxième terminal et exécuter dnsmasq
 dnsmasq -d -C dnsmasq.conf &
-
+nodogsplash
